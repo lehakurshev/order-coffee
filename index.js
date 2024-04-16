@@ -1,6 +1,17 @@
 let count = 1;
 const addBtn = document.querySelector(".add-button");
 
+document.querySelectorAll('.beverage')[0].querySelector('.remove-button')
+    .addEventListener('click', () => {
+        if (document.querySelectorAll('.beverage').length === 1) {
+            return;
+        }
+
+        count--;
+        document.querySelectorAll('.beverage')[0].remove();
+    });
+
+
 addBtn.addEventListener("click", () => {
     count++;
     let forms = document.querySelectorAll(".beverage");
@@ -12,6 +23,7 @@ addBtn.addEventListener("click", () => {
     }
 
     let removeButton = newForm.querySelector(".remove-button");
+
     removeButton.addEventListener("click", () => {
         if (count > 1) {
             newForm.remove();
