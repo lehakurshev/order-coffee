@@ -105,10 +105,12 @@ let dict = {
 
 function updateModalTable() {
     const fields = document.querySelectorAll('.beverage');
+
     const beverages = Array.from(fields).map(field => ({
         beverage: dict[field.querySelector('select').value],
         milk: dict[field.querySelector('input[type="radio"]:checked').value],
-        extras: Array.from(field.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.nextElementSibling.textContent).join(', ')
+        extras: Array.from(field.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.nextElementSibling.textContent).join(', '),
+        
     }));
 
     const modalTableBody = document.querySelector('.modal-table tbody');
@@ -119,8 +121,22 @@ function updateModalTable() {
         row.innerHTML = `
             <td>${beverage.beverage}</td>
             <td>${beverage.milk}</td>
-            <td>${beverage.extras}</td>`
-        ;
+            <td>${beverage.extras}</td>
+            <td>${beverage.wishes}</td>`;
         modalTableBody.appendChild(row);
     });
 }
+
+
+function Keywords(text) {
+    const keywords = ['срочно', 'быстрее', 'побыстрее', 'скорее', 'поскорее', 'очень нужно'];
+    const regex = new RegExp(keywords.join('|'), 'gi');
+    return text.replace(regex, match => `<b>${match}</b>`);
+}
+ 
+
+document.querySelectorAll('.user-text').forEach(textarea => {
+    textarea.addEventListener('input', function() {
+        this.parentElement.querySelector('.user-output').innerHTML = Keywords(this.value);
+    });
+});
