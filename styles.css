@@ -51,3 +51,34 @@
     top: 40px;
     right: 40px;
 }
+
+.modal {
+    text-align: center;
+    box-sizing: content-box;
+    background-color: white;
+    width: 500px;
+    position: relative;
+}
+
+.close-model {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+.overlay {
+    position: fixed;
+    box-sizing: content-box;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    visibility: hidden;
+    padding: inherit;
+
+    justify-content: center;
+    align-items: center;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
