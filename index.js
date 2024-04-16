@@ -36,7 +36,7 @@ document.querySelector('.confirm-button').addEventListener('click', () => {
     if (checkTime()) {
         closeModal();
     } else {
-        document.querySelector('.input-time').style.borderColor = 'red'
+        document.querySelector('.input-time').style.borderColor = 'red';
         alert('Мы не умеем перемещаться во времени. Выберите время позже, чем текущее');
     }
 });
@@ -48,6 +48,8 @@ function checkTime() {
 
     if (Number(inputTime[0]) < Number(currentTime[0])) {
         return false;
+    } else if (Number(inputTime[0] > Number(currentTime[0]))) {
+        return true;
     } else {
         return Number(inputTime[1]) >= Number(currentTime[1]);
     }
@@ -55,7 +57,7 @@ function checkTime() {
 
 function openModal() {
     const overlay = document.querySelector('.overlay');
-    document.querySelector('.input-time').style.borderColor = null
+    document.querySelector('.input-time').style.borderColor = null;
     overlay.style.visibility = 'visible';
     document.querySelector('.status-order').textContent = getDrinksAmount();
 }
@@ -83,11 +85,12 @@ let dict = {
     'espresso': 'Эспрессо',
     'capuccino': 'Капучино',
     'cacao': 'Какао',
-    'usual' : 'Обычное',
-    'no-fat' : 'Обезжиренное',
-    'soy' : 'Соевое',
-    'coconut' : 'Кокосовое',
-}
+    'usual': 'Обычное',
+    'no-fat': 'Обезжиренное',
+    'soy': 'Соевое',
+    'coconut': 'Кокосовое',
+};
+
 function updateModalTable() {
     const fields = document.querySelectorAll('.beverage');
 
