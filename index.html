@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Заказ кофе</title>
-    <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-<form>
-    <fieldset class="beverage">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form>
+      <fieldset class="beverage">
         <button type="button" class="remove-button">X</button>
         <h4 class="beverage-count">Напиток №1</h4>
         <label class="field">
@@ -65,18 +65,32 @@
     </div>
 </form>
 
-<div class="overlay">
-    <div class="modal">
+    <div class="overlay">
+      <div class="modal">
         <button type="button" class="close-model">x</button>
         <p class="status-order">Заказ принят!</p>
         <label>
             <p>Выберите время</p>
+
+            <table class="modal-table">
+                <thead>
+                <tr>
+                    <th>Напиток</th>
+                    <th>Молоко</th>
+                    <th>Дополнительно</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
             <input type="time" class='input-time'>
         </label>
         <button type="button" class="confirm-button">Оформить</button>
     </div>
 </div>
 
-<script src="index.js"></script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
