@@ -100,11 +100,10 @@
 
 .modal-table th,
 .modal-table tr {
-    width: 100%;
+    text-align: center;
     border-collapse: collapse;
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
     background-color: #f2f2f2;
 }
 
