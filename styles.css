@@ -52,12 +52,21 @@
     right: 40px;
 }
 
+.confirm-button{
+    width: 25%;
+    align-self: center;
+    margin-top: 15px;
+}
+
 .modal {
     text-align: center;
     box-sizing: content-box;
     background-color: white;
     width: 500px;
     position: relative;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 .close-model {

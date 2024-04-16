@@ -31,8 +31,30 @@ document.querySelector('.close-model').addEventListener('click', () => {
     closeModal();
 });
 
+document.querySelector('.confirm-button').addEventListener('click', () => {
+    if (checkTime()) {
+        closeModal();
+    } else {
+        document.querySelector('.input-time').style.borderColor = 'red'
+        alert('Мы не умеем перемещаться во времени. Выберите время позже, чем текущее');
+    }
+});
+
+function checkTime() {
+    const inputTime = document.querySelector('.input-time').value.split(':');
+
+    const currentTime = new Date().toLocaleTimeString().split(':');
+
+    if (Number(inputTime[0]) < Number(currentTime[0])) {
+        return false;
+    } else {
+        return Number(inputTime[1]) >= Number(currentTime[1]);
+    }
+}
+
 function openModal() {
     const overlay = document.querySelector('.overlay');
+    document.querySelector('.input-time').style.borderColor = null
     overlay.style.visibility = 'visible';
     document.querySelector('.status-order').textContent = getDrinksAmount();
 }
@@ -50,7 +72,7 @@ function getDrinksAmount() {
         'напиток'
         : (num > 20 && (mod === 2 || mod === 3 || mod === 4)) || (num >= 2 && num <= 4) ?
             'напитка'
-            : 'напитков'}`
+            : 'напитков'}`;
 
     return `Заказ принят! Вы заказали ${num} ${drink}`;
 }
