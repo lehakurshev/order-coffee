@@ -25,6 +25,7 @@ addBtn.addEventListener("click", () => {
 document.querySelector('.submit-button').addEventListener('click', (event) => {
     event.preventDefault();
     openModal();
+    updateModalTable();
 });
 
 document.querySelector('.close-model').addEventListener('click', () => {
@@ -53,4 +54,36 @@ function getDrinksAmount() {
             : 'напитков'}`
 
     return `Заказ принят! Вы заказали ${num} ${drink}`;
+}
+
+
+let dict = {
+    'espresso': 'Эспрессо',
+    'capuccino': 'Капучино',
+    'cacao': 'Какао',
+    'usual' : 'Обычное',
+    'no-fat' : 'Обезжиренное',
+    'soy' : 'Соевое',
+    'coconut' : 'Кокосовое',
+}
+function updateModalTable() {
+    const fields = document.querySelectorAll('.beverage');
+    const beverages = Array.from(fields).map(field => ({
+        beverage: dict[field.querySelector('select').value],
+        milk: dict[field.querySelector('input[type="radio"]:checked').value],
+        extras: Array.from(field.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.nextElementSibling.textContent).join(', ')
+    }));
+
+    const modalTableBody = document.querySelector('.modal-table tbody');
+    modalTableBody.innerHTML = '';
+
+    beverages.forEach(beverage => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${beverage.beverage}</td>
+            <td>${beverage.milk}</td>
+            <td>${beverage.extras}</td>`
+        ;
+        modalTableBody.appendChild(row);
+    });
 }

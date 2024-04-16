@@ -82,3 +82,20 @@
     top: 0;
     bottom: 0;
 }
+
+
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modal-table th,
+.modal-table tr {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
